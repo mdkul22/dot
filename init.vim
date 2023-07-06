@@ -44,7 +44,7 @@ let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit'
       \}
-
+nnoremap <silent> qq <cmd>A<cr>
 call plug#begin()
 " Plugin Section
   Plug 'dracula/vim'
@@ -52,6 +52,7 @@ call plug#begin()
   Plug 'mileszs/ack.vim'
   Plug 'EdenEast/nightfox.nvim'
   Plug 'windwp/nvim-autopairs'
+  Plug 'vim-scripts/a.vim'
 "  Plug 'SirVer/ultisnips'
 "  Plug 'honza/vim-snippets'
 " Plug 'scrooloose/nerdtree'
