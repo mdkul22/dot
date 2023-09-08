@@ -28,15 +28,7 @@ return {
 			require("neodev").setup()
 
 			-- Turn on LSP status information
-			require("fidget").setup(
-				{
-				  tag = "legacy",
-				  event = "LspAttach",
-				  opts = {
-					-- options
-				  },
-				}
-			)
+			require("fidget").setup()
 
 			-- Set up cool signs for diagnostics
 			local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -148,4 +140,12 @@ return {
 			})
 		end,
 	},
+	{
+		"j-hui/fidget.nvim",
+		tag = "legacy",
+		event = "LspAttach",
+		opts = {
+			-- options
+	},
+}
 }
