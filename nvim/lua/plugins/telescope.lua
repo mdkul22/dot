@@ -40,7 +40,7 @@ return {
 			end, "Search in current buffer")
 			map("n", "<C-p>", function()
 				-- You can pass additional configuration to telescope to change theme, layout, etc.
-				require("telescope.builtin").find_files(require("telescope.themes").get_ivy({
+				require("telescope.builtin").oldfiles(require("telescope.themes").get_ivy({
 					winblend = 15,
 					previewer = false,
 				}))

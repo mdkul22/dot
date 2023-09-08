@@ -17,6 +17,7 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"pylsp",
+                    "clangd",
 				},
 				automatic_installation = true,
 			})
@@ -66,8 +67,8 @@ return {
 				lsp_map("<leader>ld", vim.lsp.buf.type_definition, bufnr, "Type definition")
 				lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr, "Document symbols")
 
-				lsp_map("gd", vim.lsp.buf.definition, bufnr, "Goto Definition")
-				lsp_map("gr", require("telescope.builtin").lsp_references, bufnr, "Goto References")
+				lsp_map("<C-d>", vim.lsp.buf.definition, bufnr, "Goto Definition")
+				lsp_map("<C-r>", require("telescope.builtin").lsp_references, bufnr, "Goto References")
 				lsp_map("gI", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
 				lsp_map("K", vim.lsp.buf.hover, bufnr, "Hover Documentation")
 				lsp_map("gD", vim.lsp.buf.declaration, bufnr, "Goto Declaration")
