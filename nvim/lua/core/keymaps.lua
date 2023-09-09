@@ -62,7 +62,7 @@ local map = require("helpers.keys").map
 -- map("n", "<leader>ur", "<cmd>nohl<cr>", "Clear highlights")
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
-map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
-map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
-map('n', '<A-N>', '<Cmd>tabnew<CR>', opts)
-map('n', '<A-C>', '<Cmd>BufferClose<CR>', opts)
+map('n', '<A-h>', '<Cmd>tabprevious<CR>', opts)
+map('n', '<A-l>', '<Cmd>tabnext<CR>', opts)
+map('n', '<A-n>', '<Cmd>tabnew<CR>', opts)
+map('n', '<A-c>', '<Cmd>tabclose<CR>', opts)
