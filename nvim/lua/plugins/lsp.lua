@@ -9,6 +9,11 @@ return {
 			"folke/neodev.nvim",
 			"RRethy/vim-illuminate",
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+            -- snippets 
+            'L3MON4D3/LuaSnip',
+            'rafamadriz/friendly-snippets',
 		},
 		config = function()
 			-- Set up Mason before anything else
