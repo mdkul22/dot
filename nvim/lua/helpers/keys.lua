@@ -17,5 +17,4 @@ M.set_leader = function(key)
 	vim.g.maplocalleader = key
 	M.map({ "n", "v" }, key, "<nop>")
 end
-
 return M

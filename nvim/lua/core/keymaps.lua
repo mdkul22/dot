@@ -14,7 +14,7 @@ local map = require("helpers.keys").map
 -- map('n', 'gx', vim.diagnostic.open_float, "Show diagnostics under cursor")
 
 -- Easier access to beginning and end of lines
--- map("n", "<M-h>", "^", "Go to beginning of line") 
+-- map("n", "<M-h>", "^", "Go to beginning of line")
 -- map("n", "<M-l>", "$", "Go to end of line")
 
 -- Better window navigation
@@ -66,3 +66,38 @@ map('n', '<A-h>', '<Cmd>tabprevious<CR>', opts)
 map('n', '<A-l>', '<Cmd>tabnext<CR>', opts)
 map('n', '<A-n>', '<Cmd>tabnew<CR>', opts)
 map('n', '<A-c>', '<Cmd>tabclose<CR>', opts)
+
+vim.api.nvim_create_user_command("DiagnosticToggle", function()
+    local config = vim.diagnostic.config
+    local vt = config().virtual_text
+    config {
+        virtual_text = not vt,
+        underline = not vt,
+        signs = not vt,
+    }
+end, { desc = "toggle diagnostic" })
+
+function setAutoCmp(mode)
+    if mode then
+        require('cmp').setup.buffer { enabled = true }
+        --require("cmp").setup({
+        --    completion = {
+        --        autocomplete = { require('cmp.types').cmp.TriggerEvent.TextChanged }
+        --    }
+        --})
+    else
+        require('cmp').setup.buffer { enabled = false }
+        --require("cmp").setup({
+        --    completion = {
+        --        autocomplete = false
+        --    }
+        --})
+    end
+end
+
+-- enable automatic completion popup on typing
+vim.cmd('command AutoCmpOn lua setAutoCmp(true)')
+-- disable automatic competion popup on typing
+vim.cmd('command AutoCmpOff lua setAutoCmp(false)')
+map('n', '<leader>C', '<Cmd>AutoCmpOn<CR>', opts)
+map('n', '<leader>c', '<Cmd>AutoCmpOff<CR>', opts)
