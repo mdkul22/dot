@@ -73,7 +73,7 @@ vim.api.nvim_create_user_command("DiagnosticToggle", function()
     config {
         virtual_text = not vt,
         underline = not vt,
-        signs = not vt,
+        --signs = not vt,
     }
 end, { desc = "toggle diagnostic" })
 
