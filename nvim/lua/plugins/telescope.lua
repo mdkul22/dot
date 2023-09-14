@@ -20,7 +20,7 @@ return {
                         },
                     },
                     preview = {
-                        hide_on_startup = false, -- hide previewer when picker startstele
+                        hide_on_startup = true, -- hide previewer when picker startstele
                     },
                 },
                 extensions = {
