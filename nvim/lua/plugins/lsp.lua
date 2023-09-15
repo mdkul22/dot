@@ -32,7 +32,7 @@ return {
 
             -- Neodev setup before LSP config
             require("neodev").setup()
-            require('cmp').setup({ enabled = false })
+            require('cmp').setup({ enabled = true })
 
             -- Turn on LSP status information
             require("fidget").setup()

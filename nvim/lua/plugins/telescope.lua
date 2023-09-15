@@ -20,7 +20,7 @@ return {
                         },
                     },
                     preview = {
-                        hide_on_startup = true, -- hide previewer when picker startstele
+                        hide_on_startup = false, -- hide previewer when picker startstele
                     },
                 },
                 extensions = {
@@ -44,21 +44,21 @@ return {
                 -- You can pass additional configuration to telescope to change theme, layout, etc.
                 require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_ivy({
                     winblend = 15,
-                    previewer = false,
+                    previewer = true,
                 }))
             end, "Search in current buffer")
             map("n", "<C-p>", function()
                 -- You can pass additional configuration to telescope to change theme, layout, etc.
                 require("telescope.builtin").find_files(require("telescope.themes").get_ivy({
                     winblend = 15,
-                    previewer = false,
+                    previewer = true,
                 }))
             end, "Search files in current directory")
             map("n", "<C-g>", function()
                 -- You can pass additional configuration to telescope to change theme, layout, etc.
                 require("telescope.builtin").live_grep(require("telescope.themes").get_ivy({
                     winblend = 20,
-                    previewer = false,
+                    previewer = true,
                 }))
             end, "live grep")
 
