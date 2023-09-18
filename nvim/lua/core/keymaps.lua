@@ -62,10 +62,10 @@ local map = require("helpers.keys").map
 -- map("n", "<leader>ur", "<cmd>nohl<cr>", "Clear highlights")
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
-map('n', '<A-,>', '<Cmd>tabprevious<CR>', opts)
-map('n', '<A-.>', '<Cmd>tabnext<CR>', opts)
-map('n', '<A-n>', '<Cmd>tabnew<CR>', opts)
-map('n', '<A-x>', '<Cmd>tabclose<CR>', opts)
+map('n', '<C-,>', '<Cmd>tabprevious<CR>', opts)
+map('n', '<C-.>', '<Cmd>tabnext<CR>', opts)
+map('n', '<C-n>', '<Cmd>tabnew<CR>', opts)
+map('n', '<C-x>', '<Cmd>tabclose<CR>', opts)
 
 vim.api.nvim_create_user_command("DiagnosticToggle", function()
     local config = vim.diagnostic.config
