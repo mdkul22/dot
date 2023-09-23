@@ -9,4 +9,5 @@ return {
     --'tpope/vim-sleuth',
     'folke/neodev.nvim',
     'vim-scripts/a.vim', -- go to header file directly
+    'roxma/vim-tmux-clipboard', -- copy between panes
 }
