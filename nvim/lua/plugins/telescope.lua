@@ -42,6 +42,7 @@ return {
             --map("n", "<leader><space>", require("telescope.builtin").buffers, "Open buffers")
             map("n", "<leader>/", function()
                 -- You can pass additional configuration to telescope to change theme, layout, etc.
+                require('cmp').setup.buffer { enabled = false }
                 require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_ivy({
                     winblend = 15,
                     previewer = true,
@@ -49,6 +50,7 @@ return {
             end, "Search in current buffer")
             map("n", "<C-p>", function()
                 -- You can pass additional configuration to telescope to change theme, layout, etc.
+                require('cmp').setup.buffer { enabled = false }
                 require("telescope.builtin").find_files(require("telescope.themes").get_ivy({
                     winblend = 15,
                     previewer = true,

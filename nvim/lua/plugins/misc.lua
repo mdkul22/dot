@@ -8,4 +8,5 @@ return {
     'ojroques/nvim-hardline',
     --'tpope/vim-sleuth',
     'folke/neodev.nvim',
+    'vim-scripts/a.vim', -- go to header file directly
 }

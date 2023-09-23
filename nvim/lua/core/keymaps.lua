@@ -18,10 +18,10 @@ local map = require("helpers.keys").map
 -- map("n", "<M-l>", "$", "Go to end of line")
 
 -- Better window navigation
---map("n", "<C-h>", "<C-w><C-h>", "Navigate windows to the left")
---map("n", "<C-j>", "<C-w><C-j>", "Navigate windows down")
---map("n", "<C-k>", "<C-w><C-k>", "Navigate windows up")
---map("n", "<C-l>", "<C-w><C-l>", "Navigate windows to the right")
+map("n", "<C-h>", "<C-w><C-h>", "Navigate windows to the left")
+map("n", "<C-j>", "<C-w><C-j>", "Navigate windows down")
+map("n", "<C-k>", "<C-w><C-k>", "Navigate windows up")
+map("n", "<C-l>", "<C-w><C-l>", "Navigate windows to the right")
 
 -- Move with shift-arrows
 --map("n", "<S-Left>", "<C-w><S-h>", "Move window to the left")
@@ -30,10 +30,10 @@ local map = require("helpers.keys").map
 --map("n", "<S-Right>", "<C-w><S-l>", "Move window to the right")
 
 -- Resize with arrows
---map("n", "<C-Up>", ":resize +2<CR>")
---map("n", "<C-Down>", ":resize -2<CR>")
---map("n", "<C-Left>", ":vertical resize +2<CR>")
---map("n", "<C-Right>", ":vertical resize -2<CR>")
+map("n", "<C-Up>", ":resize +2<CR>")
+map("n", "<C-Down>", ":resize -2<CR>")
+map("n", "<C-Left>", ":vertical resize +2<CR>")
+map("n", "<C-Right>", ":vertical resize -2<CR>")
 
 -- Deleting buffers
 -- local buffers = require("helpers.buffers")
@@ -103,3 +103,4 @@ map('n', '<leader>C', '<Cmd>AutoCmpOn<CR>', opts)
 map('n', '<leader>c', '<Cmd>AutoCmpOff<CR>', opts)
 map('n', '<leader>nt', '<Cmd>botright split | resize 10 | term<CR>', opts)
 map('t', '<ESC><ESC>', [[<C-\><C-n>]], opts)
+map('n', '<leader>hh', '<Cmd>A<CR>', opts)
