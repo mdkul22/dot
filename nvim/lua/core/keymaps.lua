@@ -62,10 +62,6 @@ map("n", "<C-Right>", ":vertical resize -2<CR>")
 -- map("n", "<leader>ur", "<cmd>nohl<cr>", "Clear highlights")
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
-map('n', '<C-,>', '<Cmd>tabprevious<CR>', opts)
-map('n', '<C-.>', '<Cmd>tabnext<CR>', opts)
-map('n', '<C-n>', '<Cmd>tabnew<CR>', opts)
-map('n', '<C-x>', '<Cmd>tabclose<CR>', opts)
 
 vim.api.nvim_create_user_command("DiagnosticToggle", function()
     local config = vim.diagnostic.config
@@ -104,3 +100,6 @@ map('n', '<leader>c', '<Cmd>AutoCmpOff<CR>', opts)
 map('n', '<leader>nt', '<Cmd>botright split | resize 10 | term<CR>', opts)
 map('t', '<ESC><ESC>', [[<C-\><C-n>]], opts)
 map('n', '<leader>hh', '<Cmd>A<CR>', opts)
+map('n', '<leader>tn', '<Cmd>tabnew<CR>', opts)
+map('n', '<leader>tt', '<Cmd>tabnext<CR>', opts)
+map('n', '<leader>td', '<Cmd>tabclose<CR>', opts)
