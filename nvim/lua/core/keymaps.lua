@@ -95,6 +95,7 @@ end
 vim.cmd('command AutoCmpOn lua setAutoCmp(true)')
 -- disable automatic competion popup on typing
 vim.cmd('command AutoCmpOff lua setAutoCmp(false)')
+vim.cmd('command Format lua vim.lsp.buf.format()')
 map('n', '<leader>C', '<Cmd>AutoCmpOn<CR>', opts)
 map('n', '<leader>c', '<Cmd>AutoCmpOff<CR>', opts)
 map('n', '<leader>nt', '<Cmd>botright split | resize 10 | term<CR>', opts)
