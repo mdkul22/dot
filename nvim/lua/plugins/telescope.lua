@@ -1,5 +1,6 @@
 -- Telescope fuzzy finding (all the things)
 return {
+--[[
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
@@ -78,4 +79,5 @@ return {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make'
     },
+    --]]
 }
