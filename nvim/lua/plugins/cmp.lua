@@ -7,7 +7,10 @@ return {
             "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
-            "L3MON4D3/LuaSnip",
+            {
+                "L3MON4D3/LuaSnip",
+                version = "v2.*",
+            },
             "saadparwaiz1/cmp_luasnip",
             "rafamadriz/friendly-snippets",
         },
@@ -80,13 +83,14 @@ return {
                     --end, { "i", "s" }),
                 }),
                 formatting = {
+                    expandable_indicator = true,
                     fields = { "kind", "abbr", "menu" },
                     format = function(entry, vim_item)
                         -- Kind icons
                         vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
                         vim_item.menu = ({
                             nvim_lsp = "[LSP]",
-                            luasnip = "[Snippet]",
+                            -- luasnip = "[Snippet]",
                             buffer = "[Buffer]",
                             path = "[Path]",
                         })[entry.source.name]

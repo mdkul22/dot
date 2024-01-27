@@ -12,7 +12,7 @@ return {
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
             -- snippets
-            'L3MON4D3/LuaSnip',
+            --            'L3MON4D3/LuaSnip',
             'rafamadriz/friendly-snippets',
         },
         config = function()
@@ -143,10 +143,24 @@ return {
                         },
                     },
                 },
-                require('lspconfig').clangd.setup {
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                },
+            })
+            local _, lspconfig = pcall(require, "lspconfig")
+            -- C/C++
+            require("lspconfig")['clangd'].setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
+                filetypes = { "h", "c", "cpp", "cc", "objc", "objcpp" },
+                cmd = { "clangd", "--background-index" },
+                single_file_support = true,
+                root_dir = lspconfig.util.root_pattern(
+                    '.clangd',
+                    '.clang-tidy',
+                    '.clang-format',
+                    'compile_commands.json',
+                    'compile_flags.txt',
+                    'configure.ac',
+                    '.git'
+                )
             })
         end,
     },

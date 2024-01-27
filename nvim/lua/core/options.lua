@@ -1,6 +1,6 @@
 local opts = {
-	shiftwidth = 4,
-	tabstop = 4,
+	shiftwidth = 1,
+    tabstop = 4,
 	expandtab = true,
 	wrap = false,
 	termguicolors = true,
@@ -17,3 +17,4 @@ end
 -- Set other options
 local colorscheme = require("helpers.colorscheme")
 vim.cmd.colorscheme(colorscheme)
+vim.g.neotree_open_after_n_toggle = 1
