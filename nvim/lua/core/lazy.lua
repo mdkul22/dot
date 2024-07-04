@@ -19,7 +19,7 @@ if not ok then
 end
 
 -- We have to set the leader key here for lazy.nvim to work
-require("helpers.keys").set_leader("m")
+require("helpers.keys").set_leader(";")
 
 -- Load plugins from specifications
 -- (The leader key must be set before this)

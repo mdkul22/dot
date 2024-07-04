@@ -1,12 +1,8 @@
 local opts = {
-	shiftwidth = 1,
-    tabstop = 4,
-	expandtab = true,
 	wrap = false,
 	termguicolors = true,
 	number = true,
 	relativenumber = true,
-    pumheight = 3,
 }
 
 -- Set options from table
