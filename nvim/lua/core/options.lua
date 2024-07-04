@@ -1,4 +1,8 @@
 local opts = {
+	tabstop = 4,
+	softtabstop = 4,
+	shiftwidth = 4,
+	expandtab = true,
 	wrap = false,
 	termguicolors = true,
 	number = true,
