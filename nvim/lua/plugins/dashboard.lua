@@ -62,7 +62,7 @@ return {
 			-- require'alpha'.setup(require'alpha.themes.startify'.config)
 			dashboard.section.footer.val = {
 				"	    	- Nothing matters, take bold choices fearlessly -		",
-				"			    - Question Everything -				",
+				"			            - Question Everything -				        ",
 				"										",
 				"										",
 			}
