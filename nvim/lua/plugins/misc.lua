@@ -7,12 +7,12 @@ return {
     -- provides better statusline messages
     'ojroques/nvim-hardline',
     'folke/neodev.nvim',
-    'vim-scripts/a.vim',     -- go to header file directly
+    'vim-scripts/a.vim',        -- go to header file directly
     'roxma/vim-tmux-clipboard', -- copy between panes
     {
         'romgrk/barbar.nvim',
         dependencies = {
-            'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+            'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
             'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
         },
         init = function() vim.g.barbar_auto_setup = false end,
@@ -31,5 +31,12 @@ return {
         lazy = false,
         priority = 1000,
         opts = {},
+    },
+    {
+        'nvim-lualine/lualine.nvim',
+        opts = {
+            themes = 'everforest',
+        },
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
     }
 }
