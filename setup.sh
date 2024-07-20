@@ -17,6 +17,10 @@ if [[$1 == "new"]]
     brew install universal-ctags
     brew install ripgrep fzf
     brew install neovim
+    brew install wezterm
+    cp .wezterm.lua ~
+    curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash
+    curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash -s -- --branch=release-0.1
     mkdir ~/.config
 
 cp -r ./nvim ~/.config/.
