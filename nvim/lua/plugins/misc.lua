@@ -32,11 +32,24 @@ return {
         priority = 1000,
         opts = {},
     },
+    -- better status-line
     {
         'nvim-lualine/lualine.nvim',
         opts = {
             themes = 'everforest',
         },
         dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
+    -- everforest colorschemes extra
+    {
+        "neanias/everforest-nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require("everforest").setup({
+                -- Your config here
+                background = 'hard',
+            })
+        end,
     }
 }
