@@ -2,7 +2,6 @@ return {
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        version = 'v3.10.0',
         opts = {
             spec = {
                 { "<leader>f", desc = 'File Format', mode = 'n' },

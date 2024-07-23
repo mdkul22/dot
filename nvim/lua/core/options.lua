@@ -1,3 +1,9 @@
+-- Create the undo directory if it doesn't exist
+local undodir = vim.fn.stdpath('config') .. '/undodir'
+if not vim.fn.isdirectory(undodir) then
+  vim.fn.mkdir(undodir, 'p')
+end
+
 local opts = {
 	tabstop = 4,
 	softtabstop = 4,
@@ -7,6 +13,8 @@ local opts = {
 	termguicolors = true,
 	number = true,
 	relativenumber = true,
+    undofile = true,
+    undodir = undodir,
 }
 
 -- Set options from table
