@@ -55,7 +55,7 @@ return {
 				dashboard.button("f", "󰍉  > Find files", ":Telescope find_files<CR>"),
 				dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
 				dashboard.button("s", "  > Settings",
-					":e $MYVIMRC | Neotree<CR> | :cd %:p:h | wincmd k | pwd<CR>"),
+					":e $MYVIMRC | :cd %:p:h | Neotree<CR>  | wincmd k | pwd<CR>"),
 				dashboard.button("q", "󰩈  > Quit NVIM", ":qa<CR>"),
 
 			}

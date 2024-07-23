@@ -55,6 +55,7 @@ map('n', '<leader>bc', '<Cmd>BufferCloseAllButCurrentOrPinned<CR>', "Close all b
 map('n', '<leader>bp', '<Cmd>BufferPin<CR>', "Pin buffer")
 map('n', '<leader>bx', '<Cmd>BufferClose<CR>', "Close buffer")
 map('n', '<leader>bs', '<Cmd>Telescope buffers<CR>', "Search buffers")
+map('n', '<leader>bn', '<Cmd>echo expand(\'%:p:h\')<CR>', "Get buffer directory")
 -- map('n', '<C-p>', "<Cmd>lua require('fzf-lua').files()<CR>", opts)
 map('n', '<C-p>', "<Cmd>Telescope find_files<CR>", "Find Files")
 -- map('n', '<C-g>', "<Cmd>lua require('fzf-lua').live_grep()<CR>", opts)
