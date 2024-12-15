@@ -12,6 +12,7 @@ config.font = wezterm.font_with_fallback {
     '0xProto',
     'Hack'
 }
+config.window_close_confirmation = 'NeverPrompt'
 config.font_size = 18.0
 
 -- and finally, return the configuration to wezterm

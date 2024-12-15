@@ -25,12 +25,17 @@ return {
         version = '^1.0.0', -- optional: only update when a new 1.x version is released
     },
     'rcarriga/nvim-notify', -- notify gui
-    'tpope/vim-commentary', -- easier commenting
     {
         "folke/tokyonight.nvim",
         lazy = false,
         priority = 1000,
         opts = {},
+    },
+    {
+        'numToStr/Comment.nvim',
+        opts = {
+            -- add any options here
+        }
     },
     -- better status-line
     {
