@@ -68,3 +68,13 @@ vim.api.nvim_del_keymap('i', ';is')
 vim.api.nvim_del_keymap('i', ';ih')
 vim.api.nvim_del_keymap('i', ';ihn')
 vim.api.nvim_del_keymap('n', ';ihn')
+-- Create a new note after asking for its title.
+map("n", "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", "New note with title")
+-- Open notes.
+map("n", "<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", "Inspect notes")
+-- Open notes associated with the selected tags.
+map("n", "<leader>zt", "<Cmd>ZkTags<CR>", "Open Notes with selected tags")
+-- Search for the notes matching a given query.
+map("n", "<leader>zf", "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>", "Search notes via query")
+-- Search for the notes matching the current visual selection.
+map("v", "<leader>zf", ":'<,'>ZkMatch<CR>", "Notes fzf search")
