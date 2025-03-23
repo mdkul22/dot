@@ -146,7 +146,7 @@ alias gp='git pull'
 alias ls='eza'
 alias zshrc='source ~/.zshrc'
 alias vizshrc='vi ~/.zshrc'
-export ZK_NOTEBOOK_DIR="~/notes"
+export ZK_NOTEBOOK_DIR="/Users/mdk/notes"
 
 cdd() {
   local input=$1
@@ -182,69 +182,58 @@ cdd() {
   echo "$formatted_date"
 }
 
+
 function gtn() {
-    task_id=$1
+    local try=$1
+    local option=$2
+
+    if [[ "$try" == "--help" || "$try" == "-h" ]]; then
+        echo "  Usage: gtn <task id/uuid> [-nl|-h|--help]"
+        echo "    gtn <task-id/uuid> [options]"
+        echo "    Options:"
+        echo "      <task id / uuid> Taskwarrior id and uuid"
+        echo "      -nl/--new-link  create new note when you have a prexisting note and link to task"
+        echo "      -h/--help print help string"
+        echo "    Notes:" 
+        echo "      Use gtn to create zk notes from your tasks"
+        echo "      gtn also auto-starts and stops your task based on when you enter and exit neovim."
+    fi
     
+    local task_id=$try
     if [ -z "$task_id" ]; then
         echo "No task selected."
         return
     fi
     
     note_path=$(task _get $task_id.zt_note)
+
+    if [[ "$option" == "-nl" ]]; then
+        echo "Creating new note link..."
+        echo "Input filename:"
+        read filename
+        new_note_path=$(zk new --title "$filename" --print-path)
+
+        if [ -z "$note_path" ]; then
+            note_path="$new_note_path"
+        else
+            note_path="$note_path $new_note_path"
+        fi
+
+        task $task_id mod zt_note:"$note_path"
+        echo "New note linked and added to task $task_id."
+    fi
     
     if [ -z "$note_path" ]; then
         echo "No linked note for task $task_id."
-        return
+        echo "creating new note..."
+        echo "Input filename:"
+        read filename
+        note_path=`zk new --title $filename --print-path`
+        task $1 mod zt_note:"$note_path"
     fi
 
-    nvim "$note_path"
+    task start $task_id
+    trap "echo 'Neovim exited. Stopping task...'; task $task_id stop" EXIT
+
+    vi "$note_path"
 }
-
-function ltn() {
-    if [ -z "$1" ]; then
-        echo "Usage: ltn <task_id> [tag1 tag2 ...]"
-        return
-    fi
-
-    task_id=$1
-    shift  # Remove task_id from arguments
-
-    # Find all notes
-    notes=$(find ~/notes -type f -maxdepth 1)
-
-    # If tags are provided, filter notes containing any of the tags
-    if [ "$#" -gt 0 ]; then
-        temp_notes=""
-        for tag in "$@"; do
-            temp_notes+=$(grep -l --text "#$tag" $notes 2>/dev/null)" "
-        done
-        notes=$(echo "$temp_notes" | tr ' ' '\n' | sort -u)  # Deduplicate results
-    fi
-
-    # Ensure we have matching files
-    if [ -z "$notes" ]; then
-        echo "No notes found matching the given tags."
-        return
-    fi
-
-    # Build a list of "Title | Filename" for fzf selection
-    note_list=$(while IFS= read -r file; do
-        title=$(LC_ALL=C.UTF-8 sed -n '1s/^# //p' "$file")  # Extract first Markdown header
-        [ -z "$title" ] && title=$(basename "$file")  # Fallback to filename
-        echo "$title | $file"
-    done <<< "$notes")
-
-    # Select a note using fzf
-    selection=$(echo "$note_list" | fzf --height=40% --reverse | awk -F '|' '{print $2}' | xargs)
-
-    if [ -z "$selection" ]; then
-        echo "No note selected."
-        return
-    fi
-
-    # Link the selected note to the task
-    task $task_id modify zt_note:"$selection"
-    echo "Task $task_id linked to note: $selection"
-}
-
-
