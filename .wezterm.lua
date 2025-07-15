@@ -52,5 +52,28 @@ config.mouse_bindings = {
   -- NOTE that binding only the 'Up' event can give unexpected behaviors.
   -- Read more below on the gotcha of binding an 'Up' event only.
 }
+config.keys = {
+  -- Move backward one word
+  {
+    key = 'LeftArrow',
+    mods = 'OPT',
+    action = wezterm.action.SendString '\x1bb', -- Sends ALT+b
+  },
+  -- Move forward one word
+  {
+    key = 'RightArrow',
+    mods = 'OPT',
+    action = wezterm.action.SendString '\x1bf', -- Sends ALT+f
+  },
+  -- You might also want to add word deletion
+  -- Delete word backward
+  {
+    key = 'Backspace',
+    mods = 'OPT',
+    action = wezterm.action.SendString '\x1b\x7f', -- Sends ALT+Backspace
+  },
+}
+
 -- and finally, return the configuration to wezterm
+
 return config
