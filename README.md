@@ -76,6 +76,12 @@ This repository contains configuration files and a setup script to quickly boots
 - If you want to use a different package manager or OS, you may need to adapt the script.
 - After running, log out and log back in to activate zsh as your default shell if prompted.
 
+## Continuous Integration
+
+All shell, Python, and Lua scripts are automatically checked on every commit using
+[GitHub Actions](.github/workflows/ci.yml). Lua linting is configured via
+[`.luacheckrc`](.luacheckrc) to allow Neovim globals and ignore long lines.
+
 ---
 
 ## License
