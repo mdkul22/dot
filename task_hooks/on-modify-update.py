@@ -16,8 +16,15 @@ def main():
                 print(json.dumps(mtask))
             else:
                 old_content = otask['update'] + '\n'
-                mtask['update'] = old_content + \
-                    time.strftime("%y:%M:%d %H:%m:%S: ") + mtask['update']
+                # Prepend a timestamp to the new update entry. The previous
+                # implementation incorrectly swapped the month and minute
+                # fields, producing output such as `25:48:26` for July 26th at
+                # 00:48. Use the correct format of `YY:MM:DD HH:MM:SS:`.
+                mtask['update'] = (
+                    old_content
+                    + time.strftime("%y:%m:%d %H:%M:%S: ")
+                    + mtask['update']
+                )
                 print(json.dumps(mtask))
     else:
         print(json.dumps(mtask))
