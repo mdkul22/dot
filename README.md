@@ -1,7 +1,7 @@
 # Dotfiles Setup
 
-This repository contains configuration files and a setup script to quickly bootstrap your development environment on a new macOS or Linux system. It includes configs for:
-
+This repository contains configuration files and a setup script to quickly bootstrap your development environment on a new macOS or Linux system.
+It includes configs for:
 - **Neovim**
 - **WezTerm**
 - **tmux**

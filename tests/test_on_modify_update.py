@@ -30,3 +30,10 @@ def test_keep_same_update():
     data = {"update": "same"}
     output = run_hook(data, data)
     assert output == data
+
+
+def test_append_existing_update():
+    old = {"update": "old"}
+    new = {"update": "new"}
+    output = run_hook(old, new)
+    assert output["update"] == "old\n24:01:02 03:04:05: new"
