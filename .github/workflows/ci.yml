@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck luarocks
+          sudo luarocks install luacheck
+      - name: ShellCheck
+        run: shellcheck setup.sh
+      - name: Python syntax
+        run: python3 -m py_compile task_hooks/on-modify-update.py
+      - name: Lua syntax
+        run: find nvim -name '*.lua' -print0 | xargs -0 -I{} luac -p {}
+      - name: Lua lint
+        run: luacheck nvim
