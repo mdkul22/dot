@@ -78,11 +78,6 @@ This repository contains configuration files and a setup script to quickly boots
 
 ---
 
-
----
-
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
-
+This repository is licensed under the MIT License. See [LICENSE](LICENSE) for details.
