@@ -15,6 +15,11 @@ else
 fi
 
 echo "Detected OS: $OS"
+if [[ -n "$TEST_MODE" ]]; then
+    echo "Test mode: skipping installation."
+    exit 0
+fi
+
 
 # Install Homebrew on Linux if needed
 if [[ "$OS" == "linux" && ! $(command -v brew) ]]; then
