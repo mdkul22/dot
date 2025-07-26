@@ -13,13 +13,13 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y shellcheck luarocks
+          sudo apt-get install -y shellcheck luarocks lua5.1
           sudo luarocks install luacheck
       - name: ShellCheck
-        run: shellcheck setup.sh
+        run: shellcheck $(git ls-files '*.sh')
       - name: Python syntax
-        run: python3 -m py_compile task_hooks/on-modify-update.py
+        run: python3 -m py_compile $(git ls-files '*.py')
       - name: Lua syntax
-        run: find nvim -name '*.lua' -print0 | xargs -0 -I{} luac -p {}
+        run: find nvim -name '*.lua' -print0 | xargs -0 luac -p
       - name: Lua lint
         run: luacheck nvim
