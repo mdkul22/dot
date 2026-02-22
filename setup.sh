@@ -46,24 +46,16 @@ install_pkg ripgrep
 install_pkg fzf
 install_pkg bat
 install_pkg eza
-install_pkg taskwarrior
-install_pkg timewarrior
 
 # WezTerm and zk are not always in default repos
 if [[ "$PM" == "brew" ]]; then
     brew install wezterm || true
-    brew install zk || true
 else
     # WezTerm
     if ! command -v wezterm &>/dev/null; then
         echo "Installing WezTerm..."
         wget https://github.com/wez/wezterm/releases/download/nightly/WezTerm-nightly.Ubuntu22.04.deb -O /tmp/wezterm.deb
         sudo apt install -y /tmp/wezterm.deb
-    fi
-    # zk
-    if ! command -v zk &>/dev/null; then
-        echo "Installing zk..."
-        curl -s https://raw.githubusercontent.com/mickael-menu/zk/master/install.sh | bash
     fi
 fi
 
@@ -87,10 +79,6 @@ cp -v .wezterm.lua ~/.wezterm.lua
 # Neovim config
 mkdir -p ~/.config
 cp -rv ./nvim ~/.config/
-
-# ZK init
-cd ~
-zk init notes || true
 
 echo "Setup complete! Start using nvim, tmux, wezterm, and zsh."
 
