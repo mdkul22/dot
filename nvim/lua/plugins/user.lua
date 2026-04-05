@@ -4,6 +4,20 @@
 
 ---@type LazySpec
 return {
+  {
+    "stevearc/aerial.nvim",
+    version = "v3.1.0",
+  },
+  {
+    "RRethy/vim-illuminate",
+    opts = {
+      filetype_overrides = {
+        c = { providers = { "lsp", "regex" } },
+        h = { providers = { "lsp", "regex" } },
+        cpp = { providers = { "lsp", "regex" } },
+      },
+    },
+  },
 
   -- == Examples of Adding Plugins ==
   {

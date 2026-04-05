@@ -146,7 +146,6 @@ alias gp='git pull'
 alias ls='eza'
 alias zshrc='source ~/.zshrc'
 alias vizshrc='vi ~/.zshrc'
-export ZK_NOTEBOOK_DIR="/Users/mdk/notes"
 
 cdd() {
   local input=$1
@@ -175,65 +174,9 @@ cdd() {
     *) echo "Invalid day format"; return 1 ;;
   esac
 
-  # Convert the date to Taskwarrior's format (YYYY-MM-DD)
+  # Convert the date to YYYY-MM-DDTHH:MM:SS
   formatted_date=$(gdate -d "$full_day" "+%Y-%m-%d")T"${time:0:2}:${time:2:2}:00"
 
   # Output the full date-time string
   echo "$formatted_date"
-}
-
-
-function gtn() {
-    local try=$1
-    local option=$2
-
-    if [[ "$try" == "--help" || "$try" == "-h" ]]; then
-        echo "  Usage: gtn <task id/uuid> [-nl|-h|--help]"
-        echo "    gtn <task-id/uuid> [options]"
-        echo "    Options:"
-        echo "      <task id / uuid> Taskwarrior id and uuid"
-        echo "      -nl/--new-link  create new note when you have a prexisting note and link to task"
-        echo "      -h/--help print help string"
-        echo "    Notes:" 
-        echo "      Use gtn to create zk notes from your tasks"
-        echo "      gtn also auto-starts and stops your task based on when you enter and exit neovim."
-    fi
-    
-    local task_id=$try
-    if [ -z "$task_id" ]; then
-        echo "No task selected."
-        return
-    fi
-    
-    note_path=$(task _get $task_id.zt_note)
-
-    if [[ "$option" == "-nl" ]]; then
-        echo "Creating new note link..."
-        echo "Input filename:"
-        read filename
-        new_note_path=$(zk new --title "$filename" --print-path)
-
-        if [ -z "$note_path" ]; then
-            note_path="$new_note_path"
-        else
-            note_path="$note_path $new_note_path"
-        fi
-
-        task $task_id mod zt_note:"$note_path"
-        echo "New note linked and added to task $task_id."
-    fi
-    
-    if [ -z "$note_path" ]; then
-        echo "No linked note for task $task_id."
-        echo "creating new note..."
-        echo "Input filename:"
-        read filename
-        note_path=`zk new --title $filename --print-path`
-        task $1 mod zt_note:"$note_path"
-    fi
-
-    task start $task_id
-    trap "echo 'Neovim exited. Stopping task...'; task $task_id stop" EXIT
-
-    vi "$note_path"
 }
