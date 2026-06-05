@@ -38,3 +38,12 @@ vim.keymap.set("n", "<leader>ld", function()
   --require("lsp_signature").toggle_float_win()
   vim.lsp.buf.signature_help()
 end, { desc = "Show Signature Help" })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown" },
+  callback = function(args)
+    vim.opt_local.wrap = true
+    pcall(vim.treesitter.stop, args.buf)
+    vim.bo[args.buf].syntax = "markdown"
+  end,
+})

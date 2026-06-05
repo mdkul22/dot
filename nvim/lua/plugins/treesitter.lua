@@ -6,8 +6,23 @@ return {
   opts = {
     ensure_installed = {
       "lua",
+      "markdown",
+      "markdown_inline",
+      "bash",
+      "c",
+      "cpp",
+      "python",
       "vim",
-      -- add more arguments for adding more treesitter parsers
+      "yaml",
+    },
+    highlight = {
+      enable = true,
+      disable = { "markdown", "markdown_inline" },
+      additional_vim_regex_highlighting = { "markdown" },
+    },
+    indent = {
+      enable = true,
+      disable = { "markdown" },
     },
     incremental_selection = {
       enable = true,

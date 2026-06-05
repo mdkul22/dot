@@ -36,6 +36,22 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      indent = {
+        filter = function(buf, _)
+          return vim.g.snacks_indent ~= false
+            and vim.b[buf].snacks_indent ~= false
+            and vim.bo[buf].buftype == ""
+            and vim.bo[buf].filetype ~= "markdown"
+        end,
+        scope = {
+          filter = function(buf)
+            return vim.bo[buf].buftype == ""
+              and vim.b[buf].snacks_scope ~= false
+              and vim.g.snacks_scope ~= false
+              and vim.bo[buf].filetype ~= "markdown"
+          end,
+        },
+      },
       dashboard = {
         preset = {
           header = table.concat({
