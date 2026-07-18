@@ -6,7 +6,7 @@ This repository contains configuration files and a setup script to quickly boots
 - **WezTerm**
 - **tmux**
 - **zsh** (with Oh My Zsh, plugins, and Powerlevel10k theme)
-- Useful CLI tools (fzf, ripgrep, bat, eza, taskwarrior, timewarrior, zk)
+- Useful CLI tools (fzf, ripgrep, bat, eza, taskwarrior, zk)
 
 ---
 
@@ -38,8 +38,7 @@ This repository contains configuration files and a setup script to quickly boots
    - Detect your OS and use the appropriate package manager (`brew` or `apt`)
    - Install required packages if missing
    - Install Oh My Zsh, plugins, and Powerlevel10k theme
-   - Copy `.zshrc`, `.tmux.conf`, `.wezterm.lua` to your home directory
-   - Copy the `nvim` config to `~/.config/nvim`
+   - Link the managed configuration files into your home directory
    - Initialize a `zk` notes directory
    - Optionally set your default shell to zsh
 
@@ -47,11 +46,11 @@ This repository contains configuration files and a setup script to quickly boots
 
 ## File Overview
 
-- [`setup.sh`](setup.sh): Main setup script for installing packages and copying configs.
+- [`setup.sh`](setup.sh): Main setup script for installing packages and linking configs.
 - [`.zshrc`](.zshrc): zsh configuration with Oh My Zsh, plugins, Powerlevel10k, and custom aliases/functions.
 - [`.tmux.conf`](.tmux.conf): tmux configuration with custom keybindings and mouse support.
 - [`.wezterm.lua`](.wezterm.lua): WezTerm terminal emulator configuration.
-- `nvim/`: Neovim configuration directory (copy to `~/.config/nvim`).
+- `nvim/`: Neovim configuration directory (linked to `~/.config/nvim`).
 
 ---
 

@@ -28,16 +28,20 @@ fi
 
 # Install packages
 install_pkg() {
-    if ! command -v "$1" &>/dev/null; then
-        echo "Installing $1..."
+    local command_name=$1
+    local brew_package=${2:-$command_name}
+    local apt_package=${3:-$brew_package}
+
+    if ! command -v "$command_name" &>/dev/null; then
+        echo "Installing $command_name..."
         if [[ "$PM" == "brew" ]]; then
-            brew install "$1"
+            brew install "$brew_package"
         else
             sudo apt-get update
-            sudo apt-get install -y "$1"
+            sudo apt-get install -y "$apt_package"
         fi
     else
-        echo "$1 already installed."
+        echo "$command_name already installed."
     fi
 }
 
@@ -48,6 +52,7 @@ install_pkg ripgrep
 install_pkg fzf
 install_pkg bat
 install_pkg eza
+install_pkg task task taskwarrior
 
 # WezTerm and zk are not always in default repos
 if [[ "$PM" == "brew" ]]; then
