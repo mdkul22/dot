@@ -14,6 +14,8 @@ def main():
         if 'update' in otask.keys():
             if otask['update'] == mtask['update']:
                 print(json.dumps(mtask))
+            elif mtask['update'] == "":
+                print(json.dumps(mtask))
             else:
                 old_content = otask['update'] + '\n'
                 # Prepend a timestamp to the new update entry. The previous
@@ -26,6 +28,12 @@ def main():
                     + mtask['update']
                 )
                 print(json.dumps(mtask))
+        else:
+            mtask['update'] = (
+                time.strftime("%y:%m:%d %H:%M:%S: ")
+                + mtask['update']
+            )
+            print(json.dumps(mtask))
     else:
         print(json.dumps(mtask))
     sys.exit(0)
@@ -33,4 +41,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

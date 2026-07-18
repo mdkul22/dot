@@ -13,7 +13,7 @@ config.font = wezterm.font_with_fallback {
     'Hack'
 }
 config.window_close_confirmation = 'NeverPrompt'
-config.font_size = 16.0
+config.font_size = 14.0
 config.mouse_bindings = {
   -- Right click sends "woot" to the terminal
   {
