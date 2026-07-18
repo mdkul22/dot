@@ -26,14 +26,12 @@ include dark-gray-blue-256.theme
 #include no-color.theme
 
 # Date and Time Settings
-dateformat=y-m-d  
-dateformat.report=y-m-d  
-date.iso=yes  
-datetimeformat=m/d/Y H:M  
-dateformat.holiday=Y-m-d  
-dateformat.annotation=y-m-d H:M  
-dateformat.edit=relative  
-dateformat.input=relative
+dateformat=yMDTHN
+dateformat.report=m/d/Y H:N
+date.iso=yes
+dateformat.holiday=Y-m-d
+dateformat.annotation=m/d/Y H:N
+dateformat.edit=relative
 
 uda.reviewed.type=date
 uda.reviewed.label=Reviewed
