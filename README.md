@@ -7,6 +7,7 @@ This repository contains configuration files and a setup script to quickly boots
 - **tmux**
 - **zsh** (with Oh My Zsh, plugins, and Powerlevel10k theme)
 - Useful CLI tools (fzf, ripgrep, bat, eza, taskwarrior, zk)
+- Taskwarrior integration with Apple Reminders on macOS
 
 ---
 
@@ -37,6 +38,7 @@ This repository contains configuration files and a setup script to quickly boots
    The script will:
    - Detect your OS and use the appropriate package manager (`brew` or `apt`)
    - Install required packages if missing
+   - Install the Apple Reminders CLI on macOS
    - Install Oh My Zsh, plugins, and Powerlevel10k theme
    - Link the managed configuration files into your home directory
    - Initialize a `zk` notes directory
@@ -51,6 +53,7 @@ This repository contains configuration files and a setup script to quickly boots
 - [`.tmux.conf`](.tmux.conf): tmux configuration with custom keybindings and mouse support.
 - [`.wezterm.lua`](.wezterm.lua): WezTerm terminal emulator configuration.
 - `nvim/`: Neovim configuration directory (linked to `~/.config/nvim`).
+- `task_hooks/apple_reminders.py`: One-way Taskwarrior synchronization to the Apple Reminders `Projects` list.
 
 ---
 

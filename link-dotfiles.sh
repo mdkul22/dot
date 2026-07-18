@@ -4,6 +4,7 @@ set -euo pipefail
 
 dotfiles_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 backup_stamp="$(date +%Y%m%d-%H%M%S)"
+backup_root="$HOME/.dotfile-backups/$backup_stamp"
 
 link_dotfile() {
     local source=$1
@@ -17,7 +18,9 @@ link_dotfile() {
     fi
 
     if [[ -e "$target" || -L "$target" ]]; then
-        local backup="${target}.backup-${backup_stamp}"
+        local relative_target=${target#"$HOME"/}
+        local backup="$backup_root/$relative_target"
+        mkdir -p "$(dirname "$backup")"
         mv "$target" "$backup"
         echo "Backed up: $target -> $backup"
     fi
@@ -32,3 +35,8 @@ link_dotfile "$dotfiles_dir/.wezterm.lua" "$HOME/.wezterm.lua"
 link_dotfile "$dotfiles_dir/.taskrc" "$HOME/.taskrc"
 link_dotfile "$dotfiles_dir/nvim" "$HOME/.config/nvim"
 link_dotfile "$dotfiles_dir/kitty.conf" "$HOME/.config/kitty/kitty.conf"
+
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    link_dotfile "$dotfiles_dir/task_hooks/apple_reminders.py" "$HOME/.task/hooks/on-add-apple-reminders.py"
+    link_dotfile "$dotfiles_dir/task_hooks/apple_reminders.py" "$HOME/.task/hooks/on-modify-apple-reminders.py"
+fi

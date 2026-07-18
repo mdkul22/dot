@@ -54,6 +54,10 @@ install_pkg bat
 install_pkg eza
 install_pkg task task taskwarrior
 
+if [[ "$OS" == "mac" ]]; then
+    install_pkg rem BRO3886/tap/rem-cli
+fi
+
 # WezTerm and zk are not always in default repos
 if [[ "$PM" == "brew" ]]; then
     brew install wezterm || true

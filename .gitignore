@@ -1,2 +1,4 @@
 undodir/*
 nvim.log
+__pycache__/
+*.pyc

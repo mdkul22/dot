@@ -51,3 +51,6 @@ report.go.filter=status:pending
 uda.update.type=string
 uda.update.label=Update
 uda.update.default=
+
+uda.apple_reminder_id.type=string
+uda.apple_reminder_id.label=Apple Reminder ID
