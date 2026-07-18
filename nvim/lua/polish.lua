@@ -12,21 +12,13 @@ vim.api.nvim_create_user_command("DiagnosticToggle", function()
 end, { desc = "toggle diagnostic" })
 
 function SetAutoCmp(mode)
-  if mode then
-    require("cmp").setup.buffer { enabled = true }
-    --require("cmp").setup({
-    --    completion = {
-    --        autocomplete = { require('cmp.types').cmp.TriggerEvent.TextChanged }
-    --    }
-    --})
-  else
-    require("cmp").setup.buffer { enabled = false }
-    --require("cmp").setup({
-    --    completion = {
-    --        autocomplete = false
-    --    }
-    --})
-  end
+  vim.g.autocmp_enabled = mode
+
+  pcall(function() require("cmp").setup.buffer { enabled = mode } end)
+
+  pcall(function()
+    if not mode then require("blink.cmp").hide() end
+  end)
 end
 
 -- enable automatic completion popup on typing
@@ -38,6 +30,19 @@ vim.keymap.set("n", "<leader>ld", function()
   --require("lsp_signature").toggle_float_win()
   vim.lsp.buf.signature_help()
 end, { desc = "Show Signature Help" })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "c", "cpp", "objc", "objcpp" },
+  callback = function()
+    vim.opt_local.expandtab = true
+    vim.opt_local.tabstop = 4
+    vim.opt_local.softtabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.autoindent = true
+    vim.opt_local.cindent = true
+    vim.opt_local.cinkeys:append "<CR>"
+  end,
+})
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown" },

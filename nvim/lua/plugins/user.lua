@@ -5,6 +5,23 @@
 ---@type LazySpec
 return {
   {
+    "Saghen/blink.cmp",
+    opts = function(_, opts)
+      vim.g.autocmp_enabled = vim.F.if_nil(vim.g.autocmp_enabled, true)
+
+      opts.completion = opts.completion or {}
+      opts.completion.menu = opts.completion.menu or {}
+
+      local old_auto_show = opts.completion.menu.auto_show
+      opts.completion.menu.auto_show = function(...)
+        if vim.bo.filetype == "markdown" then return false end
+        if vim.g.autocmp_enabled == false then return false end
+        if type(old_auto_show) == "function" then return old_auto_show(...) end
+        return old_auto_show ~= false
+      end
+    end,
+  },
+  {
     "stevearc/aerial.nvim",
     version = "v3.1.0",
   },
@@ -15,6 +32,7 @@ return {
         c = { providers = { "lsp", "regex" } },
         h = { providers = { "lsp", "regex" } },
         cpp = { providers = { "lsp", "regex" } },
+        ld = { providers = {} },
       },
     },
   },
