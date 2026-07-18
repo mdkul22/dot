@@ -2,6 +2,8 @@
 
 set -e
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Detect OS
 if [[ "$OSTYPE" == "darwin"* ]]; then
     OS="mac"
@@ -71,14 +73,8 @@ ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 [[ -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]] || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
 [[ -d "$ZSH_CUSTOM/themes/powerlevel10k" ]] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$ZSH_CUSTOM/themes/powerlevel10k"
 
-# Copy dotfiles
-cp -v .zshrc ~/.zshrc
-cp -v .tmux.conf ~/.tmux.conf
-cp -v .wezterm.lua ~/.wezterm.lua
-
-# Neovim config
-mkdir -p ~/.config
-cp -rv ./nvim ~/.config/
+# Link dotfiles so edits in the live configuration and repository stay in sync.
+"$SCRIPT_DIR/link-dotfiles.sh"
 
 echo "Setup complete! Start using nvim, tmux, wezterm, and zsh."
 
@@ -87,4 +83,3 @@ if [[ "$SHELL" != *zsh ]]; then
     chsh -s "$(command -v zsh)"
     echo "Default shell changed to zsh. Please log out and log back in."
 fi
-
